@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signin | Mocal's</title>
     <link rel="icon" type="image/x-icon" href="images/fav.png" />
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     <!-- Fonts -->
     <link href="./js/fonts.css" rel="stylesheet" />
 
@@ -60,7 +60,7 @@
                   placeholder="Enter Email Address"
                   class="input-style input-font-bold"
                 />
-    
+
                 <div class="d-flex mt-4">
                   <div class="ui fluid search selection dropdown input-font-bold" id="country">
                     <input type="hidden" name="country" />
@@ -795,14 +795,14 @@
                       </div>
                     </div>
                   </div>
-    
+
                   <input
                     type="tel"
                     placeholder="Enter Phone Number"
                     class="input-style input-font-bold ps-3"
                   />
                 </div>
-    
+
                 <div class="text-center">
                   <button
                     class="btn-purple-fill btn-width-sm mt-5 nextScreen next"
@@ -839,17 +839,17 @@
                     <div class="mb-4">
                       <div class="row">
                         <div class="col-lg-12">
-  
-                          <div class="form-check d-inline-block me-3 ps-0 ms-0">                           
+
+                          <div class="form-check d-inline-block me-3 ps-0 ms-0">
                             <label for="individual">Company Details</label>
-                          </div>                         
+                          </div>
                         </div>
                       </div>
                     </div>
 
                     <div class="mb-5">
                       <textarea id="editor"> </textarea>
-                    </div>                                       
+                    </div>
                   </div>
 
                   <div class="text-center mt-5 pt-5 mb-5">
@@ -871,8 +871,8 @@
                   <div class="modal-body pt-5 modal-px-60">
                     <div class="mb-4">
                       <div class="row">
-                        <div class="col-lg-12">                          
-                          <!-- mainsite/assets/images/signed-offer-letter-assets/upload-img-2.png -->                          
+                        <div class="col-lg-12">
+                          <!-- mainsite/assets/images/signed-offer-letter-assets/upload-img-2.png -->
                           <div class="inputfiles">
                             <div class="fileUploadWrap">
                                 <div>
@@ -882,7 +882,7 @@
                                 </div>
                                 <div class="parawrap">
                                     <p class="fileNames">File Chosen : No File Chosen </p>
-                                    <p class="fileName">Profile Picture </p>                                    
+                                    <p class="fileName">Profile Picture </p>
                                 </div>
                             </div>
                           </div>
@@ -897,7 +897,7 @@
                     <button type="button" class="btn btn-purple-fill nextScreen next">
                       Sign Up
                     </button>
-                  </div>  
+                  </div>
                 </div>
               </div>
             </div>
@@ -920,7 +920,7 @@
                       <script>
                         $(document).ready(function(){
                             $(".hide-optional").hide();
-                            
+
                         $("#individual").click(function(){
                             $(".show-optional").show();
                             $(".hide-optional").hide();
@@ -932,18 +932,18 @@
                         });
 
                     });
-                    </script>         
+                    </script>
 
     <script type="text/javascript">
         $('.step').not(':first').hide();
-    
+
     // Add click event listeners to the next and previous buttons
         $('.next').click(function () {
-    
+
             var step = $(this).closest('.step').attr('data-id');
             console.log(step);
-    
-    
+
+
         // Validate required fields of current step
             var $currentStep = $(this).closest('.step');
             var $requiredFields = $currentStep.find(':required');
@@ -959,28 +959,28 @@
             if (!valid) {
                 return false;
             }
-    
+
             $('#stepList li').removeClass('active');
             $('#stepList li').eq(step).addClass('active');
-    
+
         // Show next step
             $currentStep.hide().next().show();
         });
-    
+
         $('.prev').click(function () {
         // Get the current step index
             var step = $(this).closest('.step').attr('data-id');
             console.log(step);
             $('#stepList li').removeClass('active');
             $('#stepList li').eq(step - 2).addClass('active');
-    
+
         // Show previous step
             $(this).closest('.step').hide().prev().show();
         });
-    
+
         $('#myForm').on('submit', function (event) {
             event.preventDefault();
-    
+
         // Validate required fields of last step
             var $lastStep = $('.step:last');
             var $requiredFields = $lastStep.find(':required');
@@ -996,7 +996,7 @@
             if (!valid) {
                 return false;
             }
-    
+
             if ($('.selectedPlan > .primaryPlan').children('.optionPlan').length > 0) {
                 $(this)[0].submit();
             }
