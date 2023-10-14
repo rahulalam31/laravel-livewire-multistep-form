@@ -1,0 +1,564 @@
+header {
+    width: 100%;
+    box-shadow: 0px 3px 6px #0000004A;
+    background-color: #fff;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: calc(100% - 280px);
+    margin-left: auto;
+    .left_header {
+        width: 50%;
+        @media screen and (max-width: 767.5px) {
+            width: 40px;
+        }
+        .sidebar-control {
+            background-color: var(--red);
+            padding: 10px;
+            border-radius: 50%;
+            border: 0;
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            margin-right: 30px;
+            vertical-align: middle;
+            @media screen and (max-width: 1024px) {
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+                margin-right: 15px;
+            }
+            span {
+                width: 22px;
+                height: 2px;
+                display: block;
+                background-color: #fff;
+                margin: 0 0 6px;
+                &:last-child {
+                    margin: 0;
+                    width: 12px;
+                }
+            }
+        }
+        p {
+            font-size: 14px;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+            @media screen and (max-width: 767.5px) {
+                display: none;
+            }
+            span {
+                color: var(--light-gray);
+            }
+        }
+    }
+    .right_header {
+        width: 50%;
+        text-align: right;
+        @media screen and (max-width: 767.5px) {
+            width: calc(100% - 40px);
+        }
+        .grey_round_btn {
+            background-color: #eee;
+            border: 0;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            margin-left: 20px;
+            position: relative;
+            @media screen and (max-width: 1024px) {
+                width: 35px;
+                height: 35px;
+                margin-left: 15px;
+            }
+            img {
+                width: 20px;
+                object-fit: contain;
+                display: inline;
+                @media screen and (max-width: 1024px) {
+                    width: 15px;
+                }
+            }
+            &.active {
+                &::before {
+                    content: '•';
+                    font-size: 25px;
+                    position: absolute;
+                    right: 5px;
+                    top: -8px;
+                    color: var(--red);
+                }
+            }
+        }
+        .search_header {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            vertical-align: middle;
+            transition: 0.3s ease-in-out;
+            font-size: 14px;
+            &.open_search {
+                overflow: visible;
+                input {
+                    right: 0;
+                    left: auto;
+                }
+            }
+            input {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 50px;
+                padding: 7px 15px;
+                border-radius: 50px;
+                border: 1px solid #ccc;
+                transition: 0.3s ease-in-out;
+                width: 250px;
+            }
+            .grey_round_btn {
+                margin: 0;
+            }
+        }
+        .dropdown {
+            display: inline-block;
+            .dropdown-toggle {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+        .dropdown_btn {
+            background-color: transparent;
+            border: 0;
+            padding: 0;
+            margin-left: 50px;
+            @media screen and (max-width: 1024px) {
+                margin-left: 15px;
+            }
+            .profile_img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50px;
+                object-fit: contain;
+                background-color: #eee;
+                @media screen and (max-width: 767.5px) {
+                    display: none;
+                }
+            }
+            .arrow_img {
+                width: 14px;
+                object-fit: contain;
+                display: inline;
+                margin-left: 10px;
+            }
+        }
+    }
+    &.expand_header {
+        width: calc(100% - 100px);
+        &~.dashboard_footer {
+            width: calc(100% - 100px);
+        }
+    }
+    // @media screen and (max-width: 1024.5px) {
+    //     width: calc(100% - 100px);
+    // }
+    @media screen and (max-width: 1024.5px) {
+        width: 100% !important;
+    }
+}
+
+aside {
+    padding: 20px;
+    background-image: url(../images/side-menu-assets/sidenav-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 280px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow: auto;
+    .sidenav_logo {
+        width: 100px;
+        object-fit: contain;
+        display: block;
+        margin-bottom: 50px;
+    }
+    button,
+    .accordion-button {
+        background-color: transparent;
+        color: #fff;
+        border: 0;
+        width: 100%;
+        display: flex;
+        text-align: left;
+        padding: 0;
+        line-height: 1.3;
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif;
+        transition: 0.3s ease-in-out;
+        &:hover {
+            color: #FDEC07;
+            background-color: transparent;
+            img {
+                filter: grayscale(0);
+            }
+        }
+        &:focus {
+            border-color: transparent;
+            box-shadow: none;
+        }
+        &.active {
+            color: #FDEC07;
+            font-weight: 700;
+            &::after {
+                content: '';
+                height: 25px;
+                width: 5px;
+                background: #FDEC07;
+                position: absolute;
+                right: -20px;
+                top: -2px;
+            }
+            img {
+                filter: grayscale(0);
+            }
+        }
+        img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            margin-right: 10px;
+            filter: brightness(0) invert(0.9999999);
+        }
+    }
+    .sidenav_btn {
+        margin-bottom: 25px;
+        position: relative;
+    }
+    .accordion-button {
+        font-weight: 700;
+        &::after {
+            background-image: url(../images/side-menu-assets/arrow-icon.png);
+            background-repeat: no-repeat;
+            background-size: 12px;
+            background-position: center center;
+        }
+        &.collapsed {
+            font-weight: 400;
+        }
+    }
+    .accordion-button:not(.collapsed) {
+        color: #FDEC07;
+        background-color: transparent;
+        box-shadow: none;
+        &:after {
+            background-image: url(../images/side-menu-assets/arrow-icon-yellow.png);
+            background-repeat: no-repeat;
+            background-size: 12px;
+            background-position: center center;
+            transform: rotate(-180deg);
+        }
+        img {
+            filter: grayscale(0);
+        }
+    }
+    .accordion-item {
+        background-color: transparent;
+        border: 0;
+        margin-bottom: 25px;
+    }
+    .accordion-body {
+        padding: 20px 0 0 30px;
+        a {
+            display: block;
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 300;
+            transition: 0.3s ease-in-out;
+            position: relative;
+            &:hover {
+                color: #FDEC07;
+            }
+            &.active {
+                color: #FDEC07;
+                font-weight: 700;
+                &::after {
+                    content: '';
+                    height: 25px;
+                    width: 5px;
+                    background: #FDEC07;
+                    position: absolute;
+                    right: -20px;
+                    top: -2px;
+                }
+                img {
+                    filter: grayscale(0);
+                }
+            }
+        }
+    }
+    .mob_close {
+        display: none;
+    }
+    &.close {
+        width: 100px;
+        padding: 20px 10px;
+        &:hover {
+            width: 280px;
+            padding: 20px;
+            z-index: 999;
+            .sidenav_logo {
+                width: 100px;
+            }
+            button,
+            .accordion-button {
+                width: 100%;
+                text-align: left;
+                span {
+                    display: block;
+                }
+                img {
+                    width: 20px;
+                    height: 20px;
+                    margin: 0 10px 0 0;
+                }
+                &.active {
+                    &::after {
+                        right: -20px;
+                    }
+                }
+            }
+            .accordion-body {
+                a {
+                    display: block;
+                }
+            }
+            .accordion-button {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+        &~.main_dashboard_body {
+            width: calc(100% - 100px);
+        }
+        .sidenav_logo {
+            width: 100%;
+        }
+        button,
+        .accordion-button {
+            width: 100%;
+            text-align: center;
+            span {
+                display: none;
+            }
+            img {
+                width: 25px;
+                height: 25px;
+                margin: 0 auto;
+            }
+            &.active {
+                &::after {
+                    right: -10px;
+                }
+            }
+        }
+        .accordion-body {
+            a {
+                display: none;
+            }
+        }
+        .accordion-button {
+            &::after {
+                display: none;
+            }
+        }
+    }
+    // @media screen and (min-width: 767.5px) and (max-width: 1024.5px) {
+    //     width: 100px;
+    //     padding: 20px 10px;
+    //     &:hover {
+    //         width: 280px;
+    //         padding: 20px;
+    //         z-index: 999;
+    //         .sidenav_logo {
+    //             width: 100px;
+    //         }
+    //         button,
+    //         .accordion-button {
+    //             width: 100%;
+    //             text-align: left;
+    //             span {
+    //                 display: block;
+    //             }
+    //             img {
+    //                 width: 20px;
+    //                 height: 20px;
+    //                 margin: 0 10px 0 0;
+    //             }
+    //             &.active {
+    //                 &::after {
+    //                     right: -20px;
+    //                 }
+    //             }
+    //         }
+    //         .accordion-body {
+    //             a {
+    //                 display: block;
+    //             }
+    //         }
+    //         .accordion-button {
+    //             &::after {
+    //                 display: none;
+    //             }
+    //         }
+    //     }
+    //     &~.main_dashboard_body {
+    //         width: calc(100% - 100px);
+    //     }
+    //     .sidenav_logo {
+    //         width: 100%;
+    //     }
+    //     button,
+    //     .accordion-button {
+    //         width: 100%;
+    //         text-align: center;
+    //         span {
+    //             display: none;
+    //         }
+    //         img {
+    //             width: 25px;
+    //             height: 25px;
+    //             margin: 0 auto;
+    //         }
+    //         &.active {
+    //             &::after {
+    //                 right: -10px;
+    //             }
+    //         }
+    //     }
+    //     .accordion-body {
+    //         a {
+    //             display: none;
+    //         }
+    //     }
+    //     .accordion-button {
+    //         &::after {
+    //             display: none;
+    //         }
+    //     }
+    // }
+    @media screen and (max-width: 1024.5px) {
+        width: 100%;
+        padding: 20px 10px;
+        z-index: 9;
+        min-height: 100vh;
+        left: -100%;
+    }
+    @media screen and (max-width: 1024.5px) {
+        &.mob_aside_open {
+            width: 100%;
+            left: 0;
+            z-index: 99;
+            max-width: 300px;
+            overflow: visible;
+            .mob_close {
+                display: block;
+                position: absolute;
+                right: -50px;
+                width: 40px;
+                height: 40px;
+                max-width: 40px;
+                max-height: 40px;
+                background: var(--red);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                svg {
+                    fill: #fff;
+                }
+            }
+            .sidenav_logo {
+                width: 100px;
+            }
+            button,
+            .accordion-button {
+                width: 100%;
+                text-align: left;
+                span {
+                    display: block;
+                }
+                img {
+                    width: 20px;
+                    height: 20px;
+                    margin: 0 10px 0 0;
+                }
+                &.active {
+                    &::after {
+                        right: -10px;
+                    }
+                }
+            }
+            .accordion-body {
+                a {
+                    display: block;
+                }
+            }
+            .accordion-button {
+                &::after {
+                    display: none;
+                }
+            }
+            &.mob_aside_close {
+                left: -100%;
+            }
+        }
+    }
+}
+
+.dashboard_footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #F4F4F4;
+    padding: 10px 20px 20px;
+    width: calc(100% - 280px);
+    margin-left: auto;
+    // @media screen and (max-width: 1024.5px) {
+    //     width: calc(100% - 100px);
+    // }
+    @media screen and (max-width: 1024.5px) {
+        width: 100%;
+    }
+    p {
+        font-size: 16px;
+        color: var(--red);
+        margin: 0;
+        @media screen and (max-width: 767.5px) {
+            font-size: 14px;
+        }
+    }
+    img {
+        width: 100px;
+        object-fit: contain;
+        height: 50px;
+        margin: 0 20px 0 0;
+        @media screen and (max-width: 767.5px) {
+            height: 35px;
+            margin: 0;
+            object-position: center;
+        }
+        &.morisclub_logo {
+            height: 45px;
+            @media screen and (max-width: 767.5px) {
+                height: 30px;
+            }
+        }
+    }
+}
