@@ -6,7 +6,7 @@
 </div>
 @endif
 
-    {{-- <form wire:submit.prevent="register" id="myForm"> --}}
+    <form  id="myForm">
 
 
         @if ($currentStep == 1)
@@ -761,11 +761,9 @@
                     </div>
 
                     <div class="text-center">
-                        @if ($currentStep == 1)
                         <button class="btn-purple-fill btn-width-sm mt-5 " wire:click="increaseStep()">
                             Get Started
                         </button>
-                        @endif
                         <div class="or"></div>
                         <a href="register-google.html" class="btn-gray-border signupbtn mb-3">
                             <img src="images/register-assets/ic-google.svg" /> Sign Up with Google
@@ -866,7 +864,7 @@
                             <button type="button" class="btn btn-white-fill prevScreen prev"
                                 wire:click="decreaseStep()">
                                 < Back</button>
-                                    <button type="submit" class="btn btn-purple-fill " wire:click="register()">
+                                    <button type="button" class="btn btn-purple-fill " wire:click="register()">
                                         Sign Up
                                     </button>
                         </div>
@@ -875,6 +873,6 @@
             </div>
         @endif
 
-    {{-- </form> --}}
+    </form>
 </div>
 

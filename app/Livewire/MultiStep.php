@@ -36,9 +36,9 @@ class MultiStep extends Component
     {
         $this->resetErrorBag();
         // $this->validateData();
+        if ($this->currentStep < $this->totalSteps) {
         $this->currentStep++;
-        if ($this->currentStep > $this->totalSteps) {
-            $this->currentStep = $this->totalSteps;
+            // $this->currentStep = $this->totalSteps;
         }
     }
 
@@ -84,7 +84,7 @@ class MultiStep extends Component
 
 
 
-        dd($this);
+        dd($this->all());
         $photo_name = 'CV_' . $this->photo->getClientOriginalName();
         $upload_cv = $this->photo->storeAs('photo', $photo_name);
         User::create([

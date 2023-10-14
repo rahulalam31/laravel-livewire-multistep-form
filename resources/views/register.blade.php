@@ -33,6 +33,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/pages/register/register.css" />
+
     @livewireStyles
   </head>
 
