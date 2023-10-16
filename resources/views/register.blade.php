@@ -26,14 +26,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css"
     />
 
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/pages/register/register.css" />
-
     @livewireStyles
   </head>
 
@@ -68,106 +63,11 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js">
-</script> <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-webcomponent@1/dist/tinymce-webcomponent.min.js"></script>
-
-
-                      {{-- <script>
-                        $(document).ready(function(){
-                            $(".hide-optional").hide();
-
-                        $("#individual").click(function(){
-                            $(".show-optional").show();
-                            $(".hide-optional").hide();
-                        });
-
-                        $("#company").click(function(){
-                            $(".show-optional").hide();
-                            $(".hide-optional").show();
-                        });
-
-                    });
-                    </script>
-
-                    <script type="text/javascript">
-        $('.step').not(':first').hide();
-
-    // Add click event listeners to the next and previous buttons
-        $('.next').click(function () {
-
-            var step = $(this).closest('.step').attr('data-id');
-            console.log(step);
-
-
-        // Validate required fields of current step
-            var $currentStep = $(this).closest('.step');
-            var $requiredFields = $currentStep.find(':required');
-            var valid = true;
-            $requiredFields.each(function () {
-                if (!this.checkValidity()) {
-                    valid = false;
-                    this.reportValidity();
-                    $(this).focus();
-                return false; // break out of loop
-            }
-        });
-            if (!valid) {
-                return false;
-            }
-
-            $('#stepList li').removeClass('active');
-            $('#stepList li').eq(step).addClass('active');
-
-        // Show next step
-            $currentStep.hide().next().show();
-        });
-
-        $('.prev').click(function () {
-        // Get the current step index
-            var step = $(this).closest('.step').attr('data-id');
-            console.log(step);
-            $('#stepList li').removeClass('active');
-            $('#stepList li').eq(step - 2).addClass('active');
-
-        // Show previous step
-            $(this).closest('.step').hide().prev().show();
-        });
-
-        $('#myForm').on('submit', function (event) {
-            event.preventDefault();
-
-        // Validate required fields of last step
-            var $lastStep = $('.step:last');
-            var $requiredFields = $lastStep.find(':required');
-            var valid = true;
-            $requiredFields.each(function () {
-                if (!this.checkValidity()) {
-                    valid = false;
-                    this.reportValidity();
-                    $(this).focus();
-                return false; // break out of loop
-            }
-        });
-            if (!valid) {
-                return false;
-            }
-
-            if ($('.selectedPlan > .primaryPlan').children('.optionPlan').length > 0) {
-                $(this)[0].submit();
-            }
-        });
-    </script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/777soj19kolru4art71pyoei5biguouavgrcgop6xabu7uog/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
-
-      $("#country, .dropdownmenu").dropdown({
-            onChange: function (value, text, $selectedItem) {
-              // Update the hidden input with the selected value
-              var hiddenInput = $(this).find('input[name="country"]');
-              hiddenInput.val(value);
-            },
-        }
-            );
+      $("#country, .dropdownmenu").dropdown();
       $("#empolsize").dropdown();
       $("#client_list, #social_list").dropdown();
 
@@ -182,21 +82,12 @@
           $(".profileSection").css("display", "block");
         }
       });
-
-
     </script>
 <script>
-
-    $('#editor').summernote({
-        placeholder: 'Hello Bootstrap 4',
-        tabsize: 2,
-        height: 100
-      });
+//   tinymce.init({
+//       selector: '#editor',
+//   });
 </script>
-    <!-- push script -->
-    @yield('scripts')
-
-
 @livewireScripts
   </body>
 </html>
