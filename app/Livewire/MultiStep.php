@@ -21,6 +21,30 @@ class MultiStep extends Component
     public $currentStep = 1;
 
 
+
+    protected $listeners = [
+        'fileUpload'     => 'handleFileUpload',
+        'ticketSelected',
+    ];
+
+
+    public function handleFileUpload($imageData)
+    {
+        $this->image = $imageData;
+    }
+
+
+    protected $listeners = [
+        'fileUpload'     => 'handleFileUpload',
+        'ticketSelected',
+    ];
+
+
+    public function handleFileUpload($imageData)
+    {
+        $this->image = $imageData;
+    }
+
     public function mount()
     {
         $this->currentStep = 1;
@@ -32,9 +56,8 @@ class MultiStep extends Component
     }
 
 
-    public function increaseStep()
-    {
-        $this->resetErrorBag();
+    public function increaseStep(){
+        // $this->resetErrorBag();
         // $this->validateData();
         if ($this->currentStep < $this->totalSteps) {
         $this->currentStep++;
@@ -42,9 +65,8 @@ class MultiStep extends Component
         }
     }
 
-    public function decreaseStep()
-    {
-        $this->resetErrorBag();
+    public function decreaseStep(){
+        // $this->resetErrorBag();
         $this->currentStep--;
         if ($this->currentStep < 1) {
             $this->currentStep = 1;
@@ -72,32 +94,41 @@ class MultiStep extends Component
         }
     }
 
-    public function register()
-    {
-        $this->resetErrorBag();
+    public function register(){
+          $this->resetErrorBag();
+          if($this->currentStep == 4){
+              $this->validate([
+                  'cv'=>'required|mimes:doc,docx,pdf|max:1024',
+                  'terms'=>'accepted'
+              ]);
+          }
 
-        if($this->currentStep == 4){
-            $this->validate([
-                'photo'=>'required|mimes:jpeg,jpg,webp|max:5500'
-            ]);
-        }
+          $creadtedData = User::create([
 
+          ]);
+        //   $cv_name = 'CV_'.$this->cv->getClientOriginalName();
+        //   $upload_cv = $this->cv->storeAs('students_cvs', $cv_name);
 
+        //   if($upload_cv){
+        //       $values = array(
+        //           "first_name"=>$this->first_name,
+        //           "last_name"=>$this->last_name,
+        //           "gender"=>$this->gender,
+        //           "email"=>$this->email,
+        //           "phone"=>$this->phone,
+        //           "country"=>$this->country,
+        //           "city"=>$this->city,
+        //           "frameworks"=>json_encode($this->frameworks),
+        //           "description"=>$this->description,
+        //           "cv"=>$cv_name,
+        //       );
 
-        dd($this->all());
-        $photo_name = 'CV_' . $this->photo->getClientOriginalName();
-        $upload_cv = $this->photo->storeAs('photo', $photo_name);
-        User::create([
-            "email" => $this->email,
-            "country" => $this->country,
-            "phone" => $this->phone,
-            "editor" => $this->editor,
-            "photo" => $upload_cv->url(),
-        ]);
-
-          $this->reset();
-          $this->currentStep = 1;
-        $data = ['email' => $this->email, 'phone' => $this->country . ' - ' . $this->phone, 'Company Details' => $this->editor];
-        return redirect()->route('registration.success', $data);
+        //     //   Student::insert($values);
+        //     //   $this->reset();
+        //     //   $this->currentStep = 1;
+        //     $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email];
+        //     return redirect()->route('registration.success', $data);
+        //   }
     }
+
 }

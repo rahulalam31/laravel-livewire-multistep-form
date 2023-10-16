@@ -159,7 +159,15 @@
     </script> --}}
 
     <script>
-      $("#country, .dropdownmenu").dropdown();
+
+      $("#country, .dropdownmenu").dropdown({
+            onChange: function (value, text, $selectedItem) {
+              // Update the hidden input with the selected value
+              var hiddenInput = $(this).find('input[name="country"]');
+              hiddenInput.val(value);
+            },
+        }
+            );
       $("#empolsize").dropdown();
       $("#client_list, #social_list").dropdown();
 
