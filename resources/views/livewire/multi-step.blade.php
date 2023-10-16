@@ -6,10 +6,10 @@
 </div>
 @endif
 
-    <form  id="myForm">
+    <form wire:submit="register" id="myForm">
 
 
-        @if ($currentStep === 1)
+        @if ($currentStep == 1)
 
         <div id="step-1" class="clientFrom step p-0" data-id='1'>
             <div class="text-center pt-5">
@@ -780,7 +780,7 @@
 
 
 
-        @if ($currentStep === 2)
+        @if ($currentStep == 2)
 
         <div id="step-2" class="clientFrom step p-0 Hideborder" data-id='2'>
             <div class="modal-content radius24">
@@ -820,7 +820,7 @@
 
 
 
-        @if ($currentStep === 3)
+        @if ($currentStep == 3)
 
         <div id="step-3" class="clientFrom step p-0 Hideborder" data-id='3'>
             <div class="modal-content radius24">
@@ -840,7 +840,7 @@
                                             <div>
                                                 <img src="images/register-assets/upload-files.png" alt=""
                                                     class="DropIcon" />
-                                                <input type="file" name="import_file" wire:model="file">
+                                                <input type="file" name="import_file" wire:model="photo">
                                             </div>
                                             <div class="parawrap">
                                                 <p class="fileNames">File Chosen : No File Chosen </p>
@@ -858,7 +858,7 @@
                             <button type="button" class="btn btn-white-fill prevScreen prev"
                                 wire:click="decreaseStep()">
                                 < Back</button>
-                                    <button type="button" class="btn btn-purple-fill " wire:click="register()">
+                                    <button type="submit" class="btn btn-purple-fill " >
                                         Sign Up
                                     </button>
                         </div>
@@ -870,3 +870,16 @@
     </form>
 </div>
 
+
+<script>
+    window.livewire.on('fileChoosen', () => {
+        let inputField = document.getElementById('image')
+        let file = inputField.files[0]
+        let reader = new FileReader();
+        reader.onloadend = () => {
+            window.livewire.emit('fileUpload', reader.result)
+        }
+        reader.readAsDataURL(file);
+
+    })
+</script>
