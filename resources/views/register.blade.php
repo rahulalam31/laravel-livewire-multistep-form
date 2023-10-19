@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/pages/register/register.css" />
     @livewireStyles
+    @livewireScripts
   </head>
 
   <body>
@@ -67,7 +68,20 @@
 <script src="https://cdn.tiny.cloud/1/777soj19kolru4art71pyoei5biguouavgrcgop6xabu7uog/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
-      $("#country, .dropdownmenu").dropdown();
+
+    $(document).ready(function() {
+        $('#country').dropdown({
+            onChange: function(value, text, $selectedItem) {
+                // When the dropdown selection changes, update the hidden input
+                $('#country-input').val(value);
+            }
+        });
+    });
+    //   $("#country, .dropdownmenu").dropdown({
+    //         onChange: function (value, text, $selectedItem) {
+    //             $('input[name="country"]').val(value);
+    //         }
+    //     });
       $("#empolsize").dropdown();
       $("#client_list, #social_list").dropdown();
 
@@ -88,6 +102,7 @@
 //       selector: '#editor',
 //   });
 </script>
-@livewireScripts
+
+
   </body>
 </html>

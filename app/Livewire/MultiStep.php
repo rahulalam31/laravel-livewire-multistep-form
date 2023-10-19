@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -10,28 +11,26 @@ class MultiStep extends Component
 {
     use WithFileUploads;
 
-
+    #[Rule('required|email')]
     public $email;
+
+    #[Rule('required|string')]
     public $country;
+
+    #[Rule('required')]
     public $phone;
+
+    #[Rule('required|string')]
     public $editor;
+
+    #[Rule('image|max:2055')]
     public $photo;
+
+    public $imgurl;
 
     public $totalSteps = 4;
     public $currentStep = 1;
 
-
-
-    protected $listeners = [
-        'fileUpload'     => 'handleFileUpload',
-        'ticketSelected',
-    ];
-
-
-    public function handleFileUpload($imageData)
-    {
-        $this->photo = $imageData;
-    }
 
     public function mount(){
         $this->currentStep = 1;
@@ -61,41 +60,22 @@ class MultiStep extends Component
     }
 
 
-    public function validateData(){
-
-        if($this->currentStep == 1){
-            $this->validate([
-                'email'=>'required|string',
-                'country'=>'required|string',
-                'phone'=>'required',
-            ]);
-        }
-        elseif($this->currentStep == 2){
-              $this->validate([
-                 'editor'=>'required',
-              ]);
-        }
-        elseif($this->currentStep == 3){
-              $this->validate([
-                  'photo'=>'required'
-              ]);
-        }
-    }
-
     public function register(){
-        // if($this->currentStep == 4){
+
+        if($this->photo) {
+            $this->imgurl = $this->photo->store('public/upload');
+        }
         User::create([
             'country' => $this->country,
             'phone' => $this->phone,
             'detail' => $this->editor,
-            'photo' => $this->photo,
+            'photo' => $this->imgurl,
             'email' => $this->email,
         ]);
 
 
         $data = ['email'=>$this->email, 'country' => $this->country, 'phone' =>$this->phone,'detail'=>$this->editor];
         return redirect()->route('registration.success', $data);
-    // }
     }
 
 }

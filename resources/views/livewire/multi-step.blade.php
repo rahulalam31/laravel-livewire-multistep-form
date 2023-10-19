@@ -1,22 +1,22 @@
 <div>
 
-@if(!empty($successMessage))
-<div class="alert alert-success">
-   {{ $successMessage }}
-</div>
-@endif
+    @if (!empty($successMessage))
+        <div class="alert alert-success">
+            {{ $successMessage }}
+        </div>
+    @endif
 
-    <form wire:submit="register" id="myForm">
+    {{-- <form id="myForm"> --}}
 
 
-        @if ($currentStep == 1)
-
+    @if ($currentStep == 1)
         <div id="step-1" class="clientFrom step p-0" data-id='1'>
             <div class="text-center pt-5">
                 <img src="images/register-assets/mocal-logo.svg" />
             </div>
             <div class="modal-px-60 pt-5">
-                <input type="email" placeholder="Enter Email Address" class="input-style input-font-bold" wire:model="email" />
+                <input type="email" placeholder="Enter Email Address" class="input-style input-font-bold"
+                    wire:model="email" />
 
                 <div class="d-flex mt-4">
                     <div class="ui fluid search selection dropdown input-font-bold" id="country">
@@ -753,35 +753,35 @@
                         </div>
                     </div>
 
-                    <input type="tel" placeholder="Enter Phone Number" class="input-style input-font-bold ps-3" wire:model="phone" />
+                    <input type="tel" placeholder="Enter Phone Number" class="input-style input-font-bold ps-3"
+                        wire:model="phone" />
                 </div>
 
-                    <div class="text-center">
-                        <button class="btn-purple-fill btn-width-sm mt-5 " wire:click="increaseStep()">
-                            Get Started
-                        </button>
-                        <div class="or"></div>
-                        <a href="register-google.html" class="btn-gray-border signupbtn mb-3">
-                            <img src="images/register-assets/ic-google.svg" /> Sign Up with Google
-                        </a><br />
+                <div class="text-center">
+                    <button class="btn-purple-fill btn-width-sm mt-5 " wire:click="increaseStep()">
+                        Get Started
+                    </button>
+                    <div class="or"></div>
+                    <a href="register-google.html" class="btn-gray-border signupbtn mb-3">
+                        <img src="images/register-assets/ic-google.svg" /> Sign Up with Google
+                    </a><br />
 
-                        <a href="#.html" class="btn-gray-border signupbtn mb-3">
-                            <img src="images/register-assets/ic-microsoft.svg" /> Sign Up with Microsoft
-                        </a><br />
+                    <a href="#.html" class="btn-gray-border signupbtn mb-3">
+                        <img src="images/register-assets/ic-microsoft.svg" /> Sign Up with Microsoft
+                    </a><br />
 
-                        <p class="mt-4 mb-5">
-                            Already have an account?
-                            <a href="signin.html" class="anchor-blue text-decoration">Log in</a>
-                        </p>
-                    </div>
+                    <p class="mt-4 mb-5">
+                        Already have an account?
+                        <a href="signin.html" class="anchor-blue text-decoration">Log in</a>
+                    </p>
                 </div>
             </div>
-        @endif
+        </div>
+    @endif
 
 
 
-        @if ($currentStep == 2)
-
+    @if ($currentStep == 2)
         <div id="step-2" class="clientFrom step p-0 Hideborder" data-id='2'>
             <div class="modal-content radius24">
                 <div class="pt-5">
@@ -789,46 +789,45 @@
                         <img src="images/signin-assets/mocal-logo.svg" class="logo-sm" />
                     </div>
 
-                        <div class="modal-body pt-4 modal-px-60">
-                            <div class="mb-4">
-                                <div class="row">
-                                    <div class="col-lg-12">
+                    <div class="modal-body pt-4 modal-px-60">
+                        <div class="mb-4">
+                            <div class="row">
+                                <div class="col-lg-12">
 
-                                        <div class="form-check d-inline-block me-3 ps-0 ms-0">
-                                            <label for="individual">Company Details</label>
-                                        </div>
+                                    <div class="form-check d-inline-block me-3 ps-0 ms-0">
+                                        <label for="individual">Company Details</label>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
                         <div class="mb-5">
                             <textarea id="editor" wire:model="editor"> </textarea>
                         </div>
                     </div>
 
-                        <div class="text-center mt-5 pt-5 mb-5">
-                            <button type="button" class="btn btn-white-fill "
-                                wire:click="decreaseStep()">
-                                < Back</button>
-                                    <button type="button" class="btn btn-purple-fill "
-                                        wire:click="increaseStep()"> Next </button>
-                        </div>
+                    <div class="text-center mt-5 pt-5 mb-5">
+                        <button type="button" class="btn btn-white-fill " wire:click="decreaseStep()">
+                            < Back</button>
+                                <button type="button" class="btn btn-purple-fill " wire:click="increaseStep()"> Next
+                                </button>
                     </div>
                 </div>
             </div>
-        @endif
+        </div>
+    @endif
 
 
 
-        @if ($currentStep == 3)
+    @if ($currentStep == 3)
 
         <div id="step-3" class="clientFrom step p-0 Hideborder" data-id='3'>
             <div class="modal-content radius24">
                 <div class="pt-5">
 
-                        <div class="text-center border-btm">
-                            <img src="images/signin-assets/mocal-logo.svg" class="logo-sm" />
-                        </div>
+                    <div class="text-center border-btm">
+                        <img src="images/signin-assets/mocal-logo.svg" class="logo-sm" />
+                    </div>
 
                     <div class="modal-body pt-5 modal-px-60">
                         <div class="mb-4">
@@ -837,49 +836,42 @@
                                     <!-- mainsite/assets/images/signed-offer-letter-assets/upload-img-2.png -->
                                     <div class="inputfiles">
                                         <div class="fileUploadWrap">
+                                            @if ($photo)
+                                                    <img src="{{ $photo->temporaryUrl() }}" alt=""
+                                                        class="DropIcon" />
+                                                @else
                                             <div>
-                                                <img src="images/register-assets/upload-files.png" alt=""
-                                                    class="DropIcon" />
-                                                <input type="file" name="import_file" wire:model="photo">
+
+                                                    <img src="images/register-assets/upload-files.png" alt=""
+                                                        class="DropIcon" />
+
+                                                <input type="file" name="photo" wire:model="photo">
                                             </div>
                                             <div class="parawrap">
                                                 <p class="fileNames">File Chosen : No File Chosen </p>
                                                 <p class="fileName">Profile Picture </p>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="text-center mb-5">
-                            <button type="button" class="btn btn-white-fill prevScreen prev"
-                                wire:click="decreaseStep()">
-                                < Back</button>
-                                    <button type="submit" class="btn btn-purple-fill " >
-                                        Sign Up
-                                    </button>
-                        </div>
+                    <div class="text-center mb-5">
+                        <button type="button" class="btn btn-white-fill prevScreen prev"
+                            wire:click="decreaseStep()">
+                            < Back</button>
+                                <button type="submit" class="btn btn-purple-fill " wire:click="register()">
+                                    Sign Up
+                                </button>
                     </div>
                 </div>
             </div>
-        @endif
+        </div>
+    @endif
 
-    </form>
+    {{-- </form> --}}
 </div>
-
-
-<script>
-    window.livewire.on('fileChoosen', () => {
-        let inputField = document.getElementById('image')
-        let file = inputField.files[0]
-        let reader = new FileReader();
-        reader.onloadend = () => {
-            window.livewire.emit('fileUpload', reader.result)
-        }
-        reader.readAsDataURL(file);
-
-    })
-</script>

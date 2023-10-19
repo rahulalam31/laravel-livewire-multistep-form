@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('register');
-});
+})->name('home');
 
 Route::get('/success', function() {
     return view('welcome');
