@@ -800,8 +800,8 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="mb-5" wire:ignore>
 
-                        <div class="mb-5">
                             <textarea id="editor" wire:model="editor"> </textarea>
                         </div>
                     </div>
@@ -837,20 +837,20 @@
                                     <div class="inputfiles">
                                         <div class="fileUploadWrap">
                                             @if ($photo)
-                                                    <img src="{{ $photo->temporaryUrl() }}" alt=""
-                                                        class="DropIcon" />
-                                                @else
-                                            <div>
+                                                <img src="{{ $photo->temporaryUrl() }}" alt=""
+                                                    class="DropIcon" />
+                                            @else
+                                                <div>
 
                                                     <img src="images/register-assets/upload-files.png" alt=""
                                                         class="DropIcon" />
 
-                                                <input type="file" name="photo" wire:model="photo">
-                                            </div>
-                                            <div class="parawrap">
-                                                <p class="fileNames">File Chosen : No File Chosen </p>
-                                                <p class="fileName">Profile Picture </p>
-                                            </div>
+                                                    <input type="file" name="photo" wire:model="photo">
+                                                </div>
+                                                <div class="parawrap">
+                                                    <p class="fileNames">File Chosen : No File Chosen </p>
+                                                    <p class="fileName">Profile Picture </p>
+                                                </div>
                                             @endif
                                         </div>
                                     </div>
@@ -875,11 +875,39 @@
 
     {{-- </form> --}}
 </div>
-<script src="{{ asset('js/tinymce.min.js') }}" referrerpolicy="origin"></script>
+
+
+@push('scripts')
+
+
+{{-- <script src="{{ asset('js/tinymce.min.js') }}" referrerpolicy="origin"></script> --}}
 <script>
-  tinymce.init({
-    selector: '#editor', // Replace this CSS selector to match the placeholder element for TinyMCE
-    plugins: 'code table lists',
-    toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
-  });
+    tinymce.init({
+        selector: '.editor',
+        forced_root_block: false,
+        plugins: 'code table lists',
+        setup: function(editor) {
+            editor.on('init change', function() {
+                editor.save();
+            });
+            editor.on('change', function(e) {
+                @this.set('message', editor.getContent());
+            });
+        },
+        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
+    });
 </script>
+{{--
+<script>
+    function setupEditor() {
+        editor.on('init change', function() {
+            editor.save();
+        });
+        editor.on('change', function(e) {
+            @this.set('editor', editor.getContent());
+        });
+    }
+</script> --}}
+
+
+@endpush
