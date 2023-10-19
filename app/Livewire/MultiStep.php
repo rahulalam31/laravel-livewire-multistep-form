@@ -74,8 +74,7 @@ class MultiStep extends Component
         ]);
 
 
-        $data = ['email'=>$this->email, 'country' => $this->country, 'phone' =>$this->phone,'detail'=>$this->editor];
-        return redirect()->route('registration.success', $data);
+        return redirect()->route('home');
     }
 
 }
