@@ -21,7 +21,7 @@ class MultiStep extends Component
     public $phone;
 
     #[Rule('required|string')]
-    public $editor;
+    public $detail;
 
     #[Rule('image|max:2055')]
     public $photo;
@@ -68,7 +68,7 @@ class MultiStep extends Component
         User::create([
             'country' => $this->country,
             'phone' => $this->phone,
-            'detail' => $this->editor,
+            'detail' => $this->detail,
             'photo' => $this->imgurl,
             'email' => $this->email,
         ]);
