@@ -26,7 +26,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css"
     />
 
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/pages/register/register.css" />
@@ -46,7 +45,7 @@
             Risk-Free 30-Day Trial <br />
             <span class="OpacityFifty">No Credit Card Details Required</span>
           </h6>
-            <dotlottie-player src="https://lottie.host/881e64b8-e799-49f1-a3be-6d247d51fbbd/goJ2dFDvzS.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+            {{-- <dotlottie-player src="https://lottie.host/881e64b8-e799-49f1-a3be-6d247d51fbbd/goJ2dFDvzS.json" background="transparent" speed="1" loop autoplay></dotlottie-player> --}}
         </div>
 
         <div class="signin-card">
@@ -67,22 +66,19 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
 {{-- <script src="https://cdn.tiny.cloud/1/777soj19kolru4art71pyoei5biguouavgrcgop6xabu7uog/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> --}}
-
+<script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-webcomponent@1/dist/tinymce-webcomponent.min.js"></script>
     <script>
+//  $(document).ready(function() {
+        $("#country, .dropdownmenu").dropdown();
 
-    $(document).ready(function() {
-        $('#country').dropdown({
-            onChange: function(value, text, $selectedItem) {
-                // When the dropdown selection changes, update the hidden input
-                $('#country-input').val(value);
-            }
+        // Add a click event listener to the dropdown items
+        $("#country .item").on("click", function() {
+            var selectedValue = $(this).data("value"); // Get the data-value attribute
+            console.log("selected", selectedValue);
+            $("#country input[name='country']").val(selectedValue); // Update the hidden input field
         });
-    });
-    //   $("#country, .dropdownmenu").dropdown({
-    //         onChange: function (value, text, $selectedItem) {
-    //             $('input[name="country"]').val(value);
-    //         }
-    //     });
+    // });
+    //   $("#country, .dropdownmenu").dropdown();
       $("#empolsize").dropdown();
       $("#client_list, #social_list").dropdown();
 
