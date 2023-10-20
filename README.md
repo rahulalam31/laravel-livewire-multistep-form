@@ -5,9 +5,6 @@ Steps in the done project
 #### 2. made livewire component and listener and storing the data and the image in base64 encoded.
 #### 3. redirect to sucess page on sucess full registration.
 
-# Error
-
-#### 1. the wyisgi editor error on data submit so just done it <textarea> 
 
 ## Installation
 
