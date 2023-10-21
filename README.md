@@ -16,3 +16,6 @@ composer install
 php artisan serve
 ```
 [HomePage](http://127.0.0.1:8000/)
+
+# check the demo vide here
+[Screencast from 2023-10-21 11-58-09.webm](https://github.com/rahulalam31/laravel-livewire-multistep-form/assets/40790503/ca754b91-c39d-4d4c-af20-f084de836651)
